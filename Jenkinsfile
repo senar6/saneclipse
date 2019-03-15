@@ -9,13 +9,13 @@ node () {
 	}
 	stage ('example-maven-project - Build') {
  			// Maven build step
-	withMaven(maven: 'Maven3.5.2') { 
+	//withMaven(maven: 'Maven3.5.2') { 
  			if(isUnix()) {
  				sh "mvn clean verify " 
 			} else { 
  				bat "mvn clean verify " 
 			} 
- 		} 
+ 		//} 
 	}
 }
 }
