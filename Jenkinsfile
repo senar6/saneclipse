@@ -10,11 +10,16 @@ node () {
 	stage ('example-maven-project - Build') {
  			// Maven build step
 	//withMaven(maven: 'Maven3.5.2') { 
- 			if(isUnix()) {
+		def mvn_version = 'Maven3.5.2'
+	withEnv( ["PATH+MAVEN=${tool mvn_version}/bin"] ) {
+	//sh "mvn clean package"
+		if(isUnix()) {
  				sh "mvn clean verify " 
 			} else { 
  				bat "mvn clean verify " 
 			} 
+	}
+ 			
  		//} 
 	}
 }
